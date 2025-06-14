@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "./mcp/postgres.sh"
+    },
+    "@21st-dev/magic": {
+      "command": "./mcp/magic.sh"
+    }
+  }
+}
