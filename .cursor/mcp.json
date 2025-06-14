@@ -1,7 +1,23 @@
 {
   "mcpServers": {
+    "context7": {
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net",
+        "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION",
+        "npm:@upstash/context7-mcp@1.0.14"
+      ]
+    },
     "postgres": {
       "command": "./mcp/postgres.sh"
+    },
+    "effect": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "timsmart/effect-mcp"]
+    },
+    "github": {
+      "command": "./mcp/github.sh"
     },
     "@21st-dev/magic": {
       "command": "./mcp/magic.sh"
