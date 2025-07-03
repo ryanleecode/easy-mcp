@@ -56,8 +56,14 @@ for secret in "${SECRETS_ARRAY[@]}"; do
     fi
 done
 
-# Execute with Doppler for secret injection
-exec doppler run \
-  --scope="$SCRIPT_DIR" \
-  --only-secrets="$DOPPLER_SECRETS" \
-  --command="$EXEC_CMD" 
+# Execute with or without Doppler based on whether secrets are needed
+if [ -n "$DOPPLER_SECRETS" ]; then
+    # Execute with Doppler for secret injection
+    exec doppler run \
+      --scope="$SCRIPT_DIR" \
+      --only-secrets="$DOPPLER_SECRETS" \
+      --command="$EXEC_CMD"
+else
+    # Execute directly without Doppler when no secrets are needed
+    exec $EXEC_CMD
+fi 
